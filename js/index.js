@@ -16,7 +16,7 @@
  */
 (function(window, undifined) {
   var
-    // 需要 lazyload 的 img 元素集合
+  // 需要 lazyload 的 img 元素集合
     lazyImgs = [],
     // lazyload img 的长度
     imgLength = 0,
@@ -98,17 +98,17 @@
   // 设置滚动监听
   // 滚动节流阀
   function scrollThrottle() {
-    if(window.addEventListener){
+    if (window.addEventListener) {
       window.addEventListener("scroll", srcollSetTimeout, false);
-    }else{
-      window.attachEvent("onscroll",srcollSetTimeout);
+    } else {
+      window.attachEvent("onscroll", srcollSetTimeout);
     }
 
   }
 
   // 节流函数
   // 250ms 触发一次
-  function srcollSetTimeout(){
+  function srcollSetTimeout() {
     clearTimeout(lazyLoadTimerId);
 
     lazyLoadTimerId = setTimeout(function() {
@@ -132,7 +132,7 @@
     return scrollPos;
   }
 
-  imgLazyLoad.prototype.init = function(){
+  imgLazyLoad.prototype.init = function() {
     setOffSetTop();
     isShow();
     scrollThrottle();
