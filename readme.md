@@ -5,5 +5,8 @@
 + 兼容性：ALL
 ### 使用方法
 ```javascript
-imgLazyLoad();
+  // 初始化
+  var lazyLoad = new imgLazyLoad();
+  // 如若动态添加的图片也需要懒加载 , arr 为动态添加的图片数组的 DOM 对象
+  lazyLoad.dynamic(arr);
 ```
