@@ -1,4 +1,5 @@
 ;/*!/static/js/imgLazyLoad.js*/
+;/*!/static/js/index.js*/
 /**
  * @author Coco
  * QQ:308695699
@@ -74,7 +75,14 @@
       var arrLength = dynamicArr.length,
         t = 0;
 
-      lazyImgs = Array.prototype.slice.call(lazyImgs);
+      // 兼容 IE8-
+      if(browser.msie && (browser.version==8 || browser.version==7)){
+        // IE8- 下使用 Array.prototype.slice.call 会报错，用下面这个方法解决
+        lazyImgs = Array.prototype.concat.apply([],lazyImgs).slice(0);
+      }else{
+        lazyImgs = Array.prototype.slice.call(lazyImgs);
+      }
+
       for(; t<arrLength; t++){
         var newElem = dynamicArr[t];
 
@@ -159,6 +167,27 @@
     }
     return scrollPos;
   }
+
+  // 判断 IE678
+  var browser = (function() {
+    var isIE6 = /msie 6/i.test(navigator.userAgent);
+    var isIE7 = /msie 7/i.test(navigator.userAgent);
+    var isIE8 = /msie 8/i.test(navigator.userAgent);
+    var isIE = /msie/i.test(navigator.userAgent);
+    return {
+      msie: isIE,
+      version: function() {
+        switch (true) {
+          case isIE6:
+            return 6;
+          case isIE7:
+            return 7;
+          case isIE8:
+            return 8;
+        }
+      }()
+    };
+  })();
 
   // 初始化方法
   imgLazyLoad.prototype.init = function() {
