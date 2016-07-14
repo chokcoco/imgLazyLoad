@@ -1,6 +1,4 @@
-;/*!/static/js/index.js*/
-;/*!/static/js/index.js*/
-;/*!/static/js/index.js*/
+;/*!/static/js/imgLazyLoad.js*/
 /**
  * @author Coco
  * QQ:308695699
@@ -74,11 +72,11 @@
       }
     }else{
       var arrLength = dynamicArr.length,
-        k = 0;
+        t = 0;
 
       lazyImgs = Array.prototype.slice.call(lazyImgs);
-      for(; k<arrLength; k++){
-        var newElem = dynamicArr[k];
+      for(; t<arrLength; t++){
+        var newElem = dynamicArr[t];
 
         lazyImgs.push(newElem);
       }
@@ -87,7 +85,6 @@
     imgLength = lazyImgs.length;
 
     for (; k < imgLength; k++) {
-      // console.log(typeof lazyImgs[k])
       var curElem = lazyImgs[k];
 
       // 是否已经设置了 data-offsetTop
@@ -95,7 +92,7 @@
         var top = curElem.getBoundingClientRect().top;
 
         lazyImgs[k].setAttribute('data-offsetTop', top);
-        lazyImgs[k].setAttribute('isShow', false);
+        lazyImgs[k].setAttribute('isShow', '0');
       }else{
         continue;
       }
@@ -113,7 +110,7 @@
         isShow = elem.getAttribute('isShow'),
         top = elem.getAttribute('data-offsetTop') - scrollTop;
 
-      if (isShow === true) {
+      if (isShow == '1') {
         continue;
       }
 
@@ -121,7 +118,7 @@
         var imgSrc = elem.getAttribute('data-original');
 
         elem.setAttribute('src', imgSrc);
-        elem.setAttribute('isShow', true);
+        elem.setAttribute('isShow', '1');
       }
     }
   }
