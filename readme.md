@@ -6,7 +6,7 @@
 + 支持动态添加的图片也懒加载
 + 采用了滚动防抖优化(250ms)
 
-### 使用方法
+### Usage
 ```javascript
   // 初始化
   var lazyLoad = new imgLazyLoad();
